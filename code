@@ -1,1 +1,86 @@
+.. codeblock:: python
+
+def update_allow_list(allow_list_path, remove_list_path):
+    # Open the file that contains the allow list
+    with open(allow_list_path, 'r') as file:
+        # Read the file contents
+        allow_list_content = file.read()
+    
+    # Convert the string into a list
+    allow_list = allow_list_content.splitlines()
+    
+    # Read the remove list file
+    with open(remove_list_path, 'r') as file:
+        remove_list_content = file.read()
+    
+    # Convert the string into a list
+    remove_list = remove_list_content.splitlines()
+    
+    # Iterate through the remove list
+    for remove_ip in remove_list:
+        # Remove IP addresses that are on the remove list
+        if remove_ip in allow_list:
+            allow_list.remove(remove_ip)
+    
+    # Update the file with the revised list of IP addresses
+    with open(allow_list_path, 'w') as file:
+        for ip in allow_list:
+            file.write(ip + '\n')
+
+# Example usage 
+
+allow_list_path = 'allow_list.txt'
+remove_list_path = 'remove_list.txt'
+update_allow_list(allow_list_path, remove_list_path)
+
+#Open the file that contains the allow list:
+
+with open(allow_list_path, 'r') as file:
+
+#Reasd file contents
+
+allow_list_content = file.read()
+
+#Convert string to a list
+
+allow_list = allow_list_content.splitlines()
+
+#Read thr remove list file
+
+with open(remove_list_path, 'r') as file:
+    remove_list_content = file.read()
+
+#convert string to a list
+
+remove_list = remove_list_content.splitlines()
+
+#Iterate through the remove list
+
+for remove_ip in remove_list:
+
+#remove IP address that are on hte remove list
+
+if remove_ip in allow_list:
+    allow_list.remove(remove_ip)
+
+#Update the file with the revised list of IP addresses
+
+with open(allow_list_path, 'w') as file:
+    for ip in allow_list:
+        file.write(ip + '\n')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
